@@ -1,0 +1,19 @@
+{
+  "functions": {
+    "predeploy": []
+  },
+  "hosting": {
+    "public": "pwa/dist/pwa",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "function": "ssr"
+      }
+    ]
+  }
+}
