@@ -23,7 +23,9 @@
     "@angular/platform-server": "^6.0.3",
     "@angular/router": "^6.0.3",
     "@nguniversal/module-map-ngfactory-loader": "^6.0.0",
+    "angularfire2": "5.0.0-rc.11",
     "core-js": "^2.5.4",
+    "firebase": "^5.4.0",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
   },

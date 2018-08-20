@@ -1,5 +1,6 @@
 require('zone.js/dist/zone-node');
-
+global['WebSocket'] = require("ws");
+global['XMLHttpRequest'] = require("xmlhttprequest").XMLHttpRequest;
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
@@ -19,12 +20,12 @@ const {
 enableProdMode();
 
 const app = express();
-
 app.get('**', (req, res) => {
   const reportError = err => {
     console.error('SSR Failed:', err);
     res.status(500).send(err);
   };
+
   const url = req.path;
   console.log(`Handling request for URL '${url}'`);
   try {
@@ -35,7 +36,7 @@ app.get('**', (req, res) => {
     };
     renderModuleFactory(AppServerModuleNgFactory, options)
       .then(html => {
-        res.set('Cache-Control', 'public, max-age=600, s-maxage=1200');
+        // res.set('Cache-Control', 'public, max-age=600, s-maxage=1200');
         res.send(html);
 
         return Promise.resolve();
